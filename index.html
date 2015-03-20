@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    function Customer(clintname,creditlimit,totalcredit){
+        this.clintname = clintname;
+        this.creditlimit = creditlimit;
+        this.totalcredit = totalcredit;
+    }
+
+    Customer.prototype.debit = function(val){
+
+        if(this.totalcredit == 0){
+
+            return "you have no dues we returning your all payment ";
+
+        }else if(this.totalcredit - val < 0){
+            var total = this.totalcredit;
+            this.totalcredit = 0;
+            return "your total credit was not " + val + "," +
+                    " we returning you " + (val-total) + ".";
+
+
+
+        }else if(this.totalcredit - val == 0){
+
+            this.totalcredit = 0;
+            return "thank you " + this.clintname + " you have no remaining credit";
+
+        }else{
+            this.totalcredit -= val;
+            return "your remaining credit is " + this.totalcredit;
+        }
+
+    };
+
+    var inzi = new Customer("inzi", 100, 0 );
+
+    alert(inzi.debit(30));
+
+</script>
+
+</body>
+</html>
